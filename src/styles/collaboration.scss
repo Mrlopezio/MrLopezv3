@@ -17,13 +17,15 @@
 		grid-template-rows: repeat(5, 1fr);
 		gap: 1rem;
 		&-box {
+			position: relative;
 			border: 1px solid rgba(255, 255, 255, 0.2);
 			padding: 1rem;
 			background-color: rgba(255, 255, 255, 0.05);
 			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-			border-radius: 0.5rem;
+			border-radius: 1rem;
 			display: flex;
 			flex-direction: column;
+			overflow: hidden;
 
 			h2 {
 				text-transform: uppercase;
@@ -31,7 +33,33 @@
 			p {
 				max-width: 65%;
 			}
+			&-image {
+				position: absolute;
+				bottom: -16px;
+				right: -16px;
+				border-radius: 1rem;
+				overflow: hidden;
+				scale: 1.1;
 
+				&.mockup {
+					bottom: -5rem;
+					img {
+						scale: 1;
+						filter: contrast(1.1);
+					}
+				}
+				&.design {
+					bottom: -5rem;
+					width: 200px;
+					img {
+						filter: contrast(1.1);
+					}
+				}
+				img {
+					scale: 1.01;
+					filter: contrast(1.1);
+				}
+			}
 			&-stack {
 				width: fit-content;
 				padding: 1rem;
@@ -45,25 +73,42 @@
 					width: fit-content;
 					height: 28px;
 					opacity: 0.6;
-					transition: all 0.4s ease-in-out;
 					position: relative;
-					&::after {
-						content: 'hello';
+					transition: all 0.4s ease-in-out;
+
+					&-tooltip {
 						position: absolute;
+						top: 50%;
 						left: 100%;
-						margin-left: 2rem;
-						top: 0;
-						width: 200px;
-						height: 100%;
-						background-color: var(--white);
-						opacity: 2;
-						transition: all 0.4s ease-in-out;
-						border-radius: 0.5rem;
+						translate: 0 -50%;
+						margin-left: 1rem;
+						border: 1px solid rgba(255, 255, 255, 0.2);
+						background-color: rgba(0, 0, 0, 0.2);
+						border-radius: 1rem;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						padding: 1rem;
 						opacity: 0;
+						pointer-events: none;
+						transition: all 0.4s ease-in-out;
+						&.vertical {
+							top: 0;
+							left: 0;
+							translate: 0 0;
+							// left: 50%;
+							translate: -55% -120%;
+						}
+
+						h5 {
+							font-size: 1.2rem;
+							color: var(--white);
+						}
 					}
 					&:hover {
 						opacity: 1;
-						&::after {
+						.collaboration-content-box-stack-item-tooltip {
 							opacity: 1;
 						}
 					}

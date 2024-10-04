@@ -1,0 +1,52 @@
+---
+import '../styles/contact.scss';
+import ButtonCTA from './ui/ButtonCTA.astro';
+---
+<section class="contact">
+    <div class="contact-content">
+        <div class="contact-content-info">
+            <!-- <img src="/images/contact-icon.svg" alt="Contact icon"> -->
+            <h2>Insterested in a collaboration?</h2>
+            <p>I listen and provide the techy side your business may need with no jargons or wordy stuff, straight to the point to reach the right public out for your business. You won't have to hire a full team.</p>
+
+            <div class="contact-content-info-social">
+               <a href="">Instagram</a>
+               <a href="">Linkedin</a>
+               <a href="">Slack</a>
+               <a href="">Whatsapp</a>
+            </div>
+        </div>
+        <div class="contact-content-form">
+            <form action="">
+                <div class="contact-content-form-row">
+                    <div class="contact-content-form-row-input">
+                        <input id="name" type="text"  required>
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="contact-content-form-row-input">
+                        <input id="tel" type="tel" required>
+                        <label for="tel">Phone</label>
+                    </div>
+                </div>
+                
+                <div class="contact-content-form-row">
+                    <div class="contact-content-form-row-input">
+                        <input id="email" type="email"  required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="contact-content-form-row-input">
+                        <input id="website" type="url"  required>
+                        <label for="website">Currrent website</label>
+                    </div>
+                </div>
+                <div class="contact-content-form-row">
+                    <div class="contact-content-form-row-input">
+                        <textarea id="message"  required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                </div>
+                <button class="button-form" >Send</button>
+            </form>
+        </div>
+    </div>
+</section>

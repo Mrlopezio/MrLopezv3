@@ -1,69 +1,69 @@
 @font-face {
-  font-family: "FiraSans";
-  src: url("fonts/FiraSans-Thin.ttf") format("truetype");
-  font-weight: 100;
-  font-style: normal;
+	font-family: 'FiraSans';
+	src: url('fonts/FiraSans-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
 }
 @font-face {
-  font-family: "FiraSans";
-  src: url("fonts/FiraSans-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "FiraSans";
-  src: url("fonts/FiraSans-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
+	font-family: 'FiraSans';
+	src: url('fonts/FiraSans-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "FiraSans";
-  src: url("fonts/FiraSans-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
+	font-family: 'FiraSans';
+	src: url('fonts/FiraSans-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "FiraSansExtraCondensed";
-  src: url("fonts/FiraSansExtraCondensed-Thin.ttf") format("truetype");
-  font-weight: 100;
-  font-style: normal;
-}
-@font-face {
-  font-family: "FiraSansExtraCondensed";
-  src: url("fonts/FiraSansExtraCondensed-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
+	font-family: 'FiraSans';
+	src: url('fonts/FiraSans-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "FiraSansExtraCondensed";
-  src: url("fonts/FiraSansExtraCondensed-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
+	font-family: 'FiraSansExtraCondensed';
+	src: url('fonts/FiraSansExtraCondensed-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'FiraSansExtraCondensed';
+	src: url('fonts/FiraSansExtraCondensed-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FiraSansExtraCondensed';
+	src: url('fonts/FiraSansExtraCondensed-SemiBold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
 }
 
 :root {
-  --bg: #1f1f1f;
-  --primary: #f2c84b;
+	--bg: #1f1f1f;
+	--primary: #f2c84b;
 
-  --text: #f2f0f0;
-  --white: #f2f0f0;
-  --black: #1f1f1f;
+	--text: #f2f0f0;
+	--white: #f2f0f0;
+	--black: #1f1f1f;
 
-  --font-base: "FiraSans", sans-serif;
+	--font-base: 'FiraSans', sans-serif;
 }
 
 // RESETS
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  text-align: left;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	text-align: left;
 }
 h1,
 h2,
@@ -74,55 +74,81 @@ h6,
 p,
 big,
 small {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 p,
 big,
 small {
-  text-wrap: pretty;
-  max-width: 65ch;
+	text-wrap: pretty;
+	max-width: 65ch;
 }
 img {
-  max-width: 100%;
-  display: block;
+	max-width: 100%;
+	display: block;
 }
 // END RESETS
 
 body {
-  font-family: var(--font-base);
-  background-color: var(--bg);
-  color: var(--text);
+	font-family: var(--font-base);
+	background-color: var(--bg);
+	color: var(--text);
 
-  min-height: 100dvh;
+	min-height: 100dvh;
 }
 
 h1 {
-  font-family: "FiraSansExtraCondensed", sans-serif;
-  font-weight: 100;
-  font-size: 5rem;
-  line-height: 110%;
+	font-family: 'FiraSansExtraCondensed', sans-serif;
+	font-weight: 100;
+	font-size: 5rem;
+	line-height: 110%;
 }
 h2 {
-  font-family: "FiraSansExtraCondensed", sans-serif;
-  font-weight: 100;
-  font-size: 3rem;
+	font-family: 'FiraSansExtraCondensed', sans-serif;
+	font-weight: 100;
+	font-size: 3rem;
 }
 h3 {
-  font-family: "FiraSans", sans-serif;
-  font-weight: 300;
-  font-size: 1.5rem;
+	font-family: 'FiraSans', sans-serif;
+	font-weight: 300;
+	font-size: 1.5rem;
 }
 p {
-  font-family: "FiraSans", sans-serif;
-  font-weight: 100;
+	font-family: 'FiraSans', sans-serif;
+	font-weight: 100;
+	line-height: 125%;
 }
 a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    color: var(--primary);
-    text-decoration: underline;
-  }
+	color: var(--primary);
+	text-decoration: none;
+	transition: all 0.2s ease-in-out;
+	&:hover {
+		color: var(--primary);
+		text-decoration: underline;
+	}
+}
+b {
+	font-weight: 300;
+	filter: brightness(1.2);
+}
+
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+	pointer-events: none;
 }
