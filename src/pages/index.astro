@@ -1,16 +1,19 @@
 ---
+import HomeLayout from "../layouts/RootLayout.astro";
+import Hero from "../components/Hero.astro";
+import HeroBanner from "../components/HeroBanner.astro";
+import Collaboration from "../components/Collaboration.astro";
+// // Hero
+// const heading1 = 'Crafting & building ideas into online solutions';
+// const subheading1 = 'Helping early-stages startups and small businesses to turn complicated ideas into high-performance and intuitive experiences';
+// const heroButton = 'Get in touch';
+// const wordsToEmphasize = ['ideas'];
+// // About
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Hello from MrLopez v3</h1>
-	</body>
-</html>
+<HomeLayout title="MrLopez Web Development">
+	<Hero/>
+    <HeroBanner/>
+	<Collaboration/>
+</HomeLayout>
