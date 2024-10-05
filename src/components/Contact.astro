@@ -2,7 +2,7 @@
 import '../styles/contact.scss';
 import ButtonCTA from './ui/ButtonCTA.astro';
 ---
-<section class="contact">
+<section class="contact" id="contact">
     <div class="contact-content">
         <div class="contact-content-info">
             <!-- <img src="/images/contact-icon.svg" alt="Contact icon"> -->
@@ -45,7 +45,8 @@ import ButtonCTA from './ui/ButtonCTA.astro';
                         <label for="message">Message</label>
                     </div>
                 </div>
-                <button class="button-form" >Send</button>
+                <ButtonCTA text="Send" href="#"/>
+                <!-- <button class="button-form" >Send</button> -->
             </form>
         </div>
     </div>
