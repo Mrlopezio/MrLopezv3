@@ -1,0 +1,52 @@
+---
+import '../../styles/buttons.scss'
+const { title, text, tags, logo, image, href } = Astro.props
+import Link from './Link.astro'
+---
+
+<div class="projects-content-slider-item">
+    <!-- Card -->
+	<div class="projects-content-slider-item-card">
+        <!-- BG -->
+		<div class="projects-content-slider-item-card-bg">
+            <!-- dots -->
+            <div class="projects-content-slider-item-card-bg-dots">
+                <svg width="1000px" height="480px">
+                    <pattern
+					id="pattern-circles"
+					width="24"
+					height="24"
+					patternUnits="userSpaceOnUse"
+					patternContentUnits="userSpaceOnUse"
+                    >
+					<circle id="pattern-circle" cx="10" cy="10" r="1.6257413380501518" fill="#333"></circle>
+                    </pattern>
+                    <rect id="rect" x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)"></rect>
+                 </svg>
+            </div>
+            <!-- gradient -->
+            <div class="projects-content-slider-item-card-bg-gradient"></div>
+        </div>
+        <!-- tags -->
+        <div class="projects-content-slider-item-card-tags">
+            {tags.map((tag: string, i: number) => <p>{tag}</p>)}
+        </div>
+        <!-- mockup -->
+         <div class="projects-content-slider-item-card-mockup">
+             <img src={image} alt="Webflow" />
+         </div>
+    <div class="projects-content-slider-item-card-logo">
+        <img src={logo} alt="Webflow" />
+    </div>
+	</div>
+	<div class="projects-content-slider-item-info">
+		<div class="projects-content-slider-item-info-company">
+			<h2>{title}</h2>
+			<p>{text}</p>
+		</div>
+		<div class="projects-content-slider-item-info-links">
+			<Link text="Latest project" href="#" />
+			<Link text="Live site" href="#" />
+		</div>
+	</div>
+</div>
