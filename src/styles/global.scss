@@ -1,49 +1,4 @@
-@font-face {
-	font-family: 'FiraSans';
-	src: url('/fonts/FiraSans-Thin.ttf') format('truetype');
-	font-weight: 100;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'FiraSans';
-	src: url('/fonts/FiraSans-Light.ttf') format('truetype');
-	font-weight: 300;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'FiraSans';
-	src: url('/fonts/FiraSans-Regular.ttf') format('truetype');
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'FiraSans';
-	src: url('/fonts/FiraSans-SemiBold.ttf') format('truetype');
-	font-weight: 600;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'FiraSansExtraCondensed';
-	src: url('/fonts/FiraSansExtraCondensed-Thin.ttf') format('truetype');
-	font-weight: 100;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'FiraSansExtraCondensed';
-	src: url('/fonts/FiraSansExtraCondensed-Light.ttf') format('truetype');
-	font-weight: 300;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'FiraSansExtraCondensed';
-	src: url('/fonts/FiraSansExtraCondensed-SemiBold.ttf') format('truetype');
-	font-weight: 600;
-	font-style: normal;
-}
+@import './typography.scss';
 
 :root {
 	--bg: #1f1f1f;
@@ -65,76 +20,20 @@
 	padding: 0;
 	text-align: left;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-big,
-small {
-	margin: 0;
-	padding: 0;
-}
-p,
-big,
-small {
-	text-wrap: pretty;
-	max-width: 65ch;
-}
+
 img {
 	max-width: 100%;
 	display: block;
 }
-html {
-	scroll-behavior: smooth;
-}
 // END RESETS
 
-body {
+body,
+html {
 	font-family: var(--font-base);
 	background-color: var(--bg);
 	color: var(--text);
-
 	min-height: 100dvh;
-}
-
-h1 {
-	font-family: 'FiraSansExtraCondensed', sans-serif;
-	font-weight: 100;
-	font-size: 5rem;
-	line-height: 110%;
-}
-h2 {
-	font-family: 'FiraSansExtraCondensed', sans-serif;
-	font-weight: 100;
-	font-size: 3rem;
-}
-h3 {
-	font-family: 'FiraSans', sans-serif;
-	font-weight: 300;
-	font-size: 1.5rem;
-}
-p {
-	font-family: 'FiraSans', sans-serif;
-	font-size: 1.2rem;
-	font-weight: 100;
-	line-height: 125%;
-}
-a {
-	font-family: 'FiraSans', sans-serif;
-	color: var(--primary);
-	text-decoration: none;
-	transition: all 0.2s ease-in-out;
-	&:hover {
-		color: var(--primary);
-		text-decoration: underline;
-	}
-}
-b {
-	font-weight: 300;
-	filter: brightness(1.2);
+	scroll-behavior: smooth;
 }
 
 html.lenis,
