@@ -1,15 +1,4 @@
 import React, { useState } from 'react'
-// import { Resend } from 'resend'
-
-// const resend = new Resend('re_2V3k5cRm_BDSL4zAv2bXEpUaDmoaGdxEo')
-
-// await resend.emails.send({
-// 	from: 'Acme <onboarding@resend.dev>',
-// 	to: ['delivered@resend.dev'],
-// 	subject: 'hello world',
-// 	html: '<p>it works!</p>'
-// })
-// type Props = {}
 
 const ContactForm = () => {
 	const [formSent, setFormSent] = useState(false)
@@ -34,7 +23,15 @@ const ContactForm = () => {
 
 	return (
 		<>
-			{formSent && <p>Form sent</p>}
+			{formSent && (
+				<div className="contact-content-form-sent">
+					<h3>Thank you for reaching out!</h3>
+					<p>
+						Success! Your message has been sent. We will review your inquiry and respond as soon as
+						possible. Excited to connect with you!
+					</p>
+				</div>
+			)}
 			{!formSent && (
 				<form method="POST" action="/api/sendForm" onSubmit={handleSubmit}>
 					<div className="contact-content-form-row">

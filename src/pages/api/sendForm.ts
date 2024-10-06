@@ -31,10 +31,10 @@ export const POST: APIRoute = async ({ request }) => {
 
   if (data) {
     const sendEmail = await resend.emails.send({
-      from: 'MrLopez <WebContact@mrlopez.io>',
+      from: 'MrLopez <noreply@mrlopez.io>',
       to: 'javier@mrlopez.io',
       subject: 'Hello MrLopez',
-      html: `<h2>Hello ${name}</h2>`
+      html: `<h2>Contact from Mrlopez.io</h2><br/><p>Name: ${name}</p><p>Email: ${email}</p><p>Phone: ${phone}</p><p>Website: ${website}</p><p>Message: ${message}</p>`
     })
 
     if (sendEmail.data) {
