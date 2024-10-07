@@ -1,6 +1,7 @@
 ---
 import '../styles/projects.scss'
-import ProjectCard from './ui/ProjectCard.astro'
+import ProjectCard from './ui/ProjectCard.tsx'
+import gsap from 'gsap'
 ---
 
 <section class="projects" id="projects">
@@ -8,13 +9,94 @@ import ProjectCard from './ui/ProjectCard.astro'
 		<div class="projects-content-slider">
 			<!-- Itza -->
 			<ProjectCard
+				id="itza"
 				title="Itza Media"
 				text="A student-focused platform where they choose their educational path based on passions and interests. Giving agency to the learners through some algorithms..."
-                tags={['Web Development', 'React/NextJs', 'Webflow', 'Motion']}
-                logo="/images/logos/itza.svg"
-                image="/images/mockups/itza-mockups.png"
+				tags={['Web Development', 'React/NextJs', 'Webflow', 'Motion']}
+				logo="/images/logos/itza.svg"
+				image="/images/mockups/itza-mockups.png"
+				href="/"
+				client:load
+			/>
+
+			<ProjectCard
+				id="itza2"
+				title="Itza Media"
+				text="A student-focused platform where they choose their educational path based on passions and interests. Giving agency to the learners through some algorithms..."
+				tags={['Web Development', 'React/NextJs', 'Webflow', 'Motion']}
+				logo="/images/logos/itza.svg"
+				image="/images/mockups/itza-mockups.png"
+				href="/"
+				client:load
+			/>
+
+			<ProjectCard
+				id="itza3"
+				title="Itza Media"
+				text="A student-focused platform where they choose their educational path based on passions and interests. Giving agency to the learners through some algorithms..."
+				tags={['Web Development', 'React/NextJs']}
+				logo="/images/logos/itza.svg"
+				image="/images/mockups/itza-mockups.png"
+				href="/"
+				client:load
 			/>
 		</div>
 	</div>
+	<div
+		class="projects-content-navigator"
+		style="position: absolute; bottom: 1rem; left: 50%; right: 50%; display: flex; gap:2rem;"
+	>
+		<span id="itza">1</span>
+		<span id="itza2">2</span>
+		<span id="itza3">3</span>
+	</div>
 </section>
 
+<script>
+	import Lenis from 'lenis'
+
+	const slider = document.querySelector('.projects-content-slider')
+	const cards = document.querySelectorAll('.projects-content-slider-item')
+	console.log('horizontal scroll >>> ', slider, cards)
+
+	let tl = gsap.timeline({
+		default:{
+			ease: "none"
+		},
+		scrollTrigger: {
+			trigger: slider,
+			pin: true,
+			scrub: 2,
+			end: ()=>"+=",
+			markers: true
+	}})
+
+	tl.to(slider,{
+		xPercent: -66,
+	})
+	
+
+	// const initLenis = () => {
+	// 	const lenis = new Lenis({
+	// 		lerp: 0.08,
+	// 		smoothWheel: true,
+	// 		orientation: 'horizontal'
+	// 	});
+
+	// 	lenis.on('scroll', (scroll: any) => {
+	// 		console.log(scroll.scroll)
+	// 		//@ts-ignore
+	// 		// slider.style.transform = `translate£D(${-scroll}px,0,0)`;
+
+	// 	})
+
+	// 	function raf(time: number) {
+	// 		lenis.raf(time)
+	// 		requestAnimationFrame(raf)
+	// 	}
+
+	// 	requestAnimationFrame(raf)
+	// };
+
+	// initLenis()
+</script>

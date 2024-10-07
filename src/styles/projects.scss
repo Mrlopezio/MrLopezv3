@@ -1,21 +1,50 @@
 .projects {
-	min-height: 100vh;
+	// min-height: 90vh;
+	position: relative;
+	height: 750px;
 	height: auto;
 	padding-block: 5rem;
+	outline: 2px dashed yellow;
+	overflow: hidden;
 
 	&-content {
-		max-width: 1000px;
-		height: 700px;
 		max-height: 700px;
 		margin: 0 auto;
+		width: 100%;
+		overflow: hidden;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none;
+		outline: 2px dashed red;
+		padding-inline: 50%;
+
+		&::-webkit-scrollbar {
+			display: none; /* Chrome, Safari, Opera */
+		}
 
 		&-slider {
+			outline: 2px dashed green;
 			display: flex;
-			gap: 1rem;
+			gap: 3rem;
+			width: fit-content;
+			// overflow-x: auto;
+			// scroll-snap-type: x mandatory;
+			// outline: 2px dashed red;
+			// padding-inline: 50%;
+
+			// -ms-overflow-style: none; /* IE and Edge */
+			// scrollbar-width: none;
+			// &::-webkit-scrollbar {
+			// 	display: none; /* Chrome, Safari, Opera */
+			// }
 			&-item {
-				width: 100%;
-				max-height: 800px;
+				scroll-snap-align: center;
+				width: 1200px;
+				flex: 1;
 				overflow: hidden;
+				opacity: 0.3;
+				transition: all 0.4s ease-in-out;
 				@media (width < 768px) {
 					height: auto;
 					padding: 0 1rem;
@@ -50,12 +79,11 @@
 				&-card {
 					position: relative;
 					border: 1px solid rgba(255, 255, 255, 0.1);
-					background-color: transparent;
+					background-color: #161616;
 					height: 480px;
 					border-radius: 1rem;
 					@media (width < 768px) {
 						height: 420px;
-						padding: 0 1rem;
 					}
 					&-mockup {
 						position: absolute;
@@ -94,6 +122,10 @@
 							);
 							width: 1000px;
 							height: 480px;
+
+							@media (width < 768px) {
+								translate: 0;
+							}
 						}
 					}
 					&-tags {
