@@ -53,50 +53,28 @@ import gsap from 'gsap'
 </section>
 
 <script>
-	import Lenis from 'lenis'
+	// import Lenis from 'lenis'
+	import gsap from 'gsap'
+	import { ScrollTrigger } from 'gsap/ScrollTrigger'
+	gsap.registerPlugin(ScrollTrigger)
 
 	const slider = document.querySelector('.projects-content-slider')
-	const cards = document.querySelectorAll('.projects-content-slider-item')
+	const cards = gsap.utils.toArray('.projects-content-slider-item')
+
 	console.log('horizontal scroll >>> ', slider, cards)
 
-	let tl = gsap.timeline({
-		default:{
-			ease: "none"
-		},
+	let scrollTween = gsap.to(slider, {
+		xPercent: -100 * (cards.length - 1),
+		ease: 'none',
 		scrollTrigger: {
 			trigger: slider,
 			pin: true,
-			scrub: 2,
-			end: ()=>"+=",
+			scrub: 0.05,
+			start: `center center`,
+			end: () => {
+				return '+=3000'
+			},
 			markers: true
-	}})
-
-	tl.to(slider,{
-		xPercent: -66,
+		}
 	})
-	
-
-	// const initLenis = () => {
-	// 	const lenis = new Lenis({
-	// 		lerp: 0.08,
-	// 		smoothWheel: true,
-	// 		orientation: 'horizontal'
-	// 	});
-
-	// 	lenis.on('scroll', (scroll: any) => {
-	// 		console.log(scroll.scroll)
-	// 		//@ts-ignore
-	// 		// slider.style.transform = `translate£D(${-scroll}px,0,0)`;
-
-	// 	})
-
-	// 	function raf(time: number) {
-	// 		lenis.raf(time)
-	// 		requestAnimationFrame(raf)
-	// 	}
-
-	// 	requestAnimationFrame(raf)
-	// };
-
-	// initLenis()
 </script>

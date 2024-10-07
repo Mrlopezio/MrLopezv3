@@ -1,0 +1,68 @@
+---
+
+---
+
+<div class="wrapper">
+	<div class="container">
+		<section class="item">Hello1</section>
+		<section class="item">Hello2</section>
+		<section class="item">Hello3</section>
+		<section class="item">Hello4</section>
+		<section class="item">Hello5</section>
+	</div>
+</div>
+
+<style>
+	.wrapper {
+		width: 100%;
+		height: 300vh;
+		display: flex;
+		background-color: black;
+		color: white;
+		overflow-x: hidden;
+	}
+	.container {
+		width: calc(400vw + 64px);
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+	}
+	section {
+		background-color: #333;
+		width: 80vw;
+		height: 300px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
+
+<script>
+	import gsap from 'gsap'
+	import { ScrollTrigger } from 'gsap/ScrollTrigger'
+	gsap.registerPlugin(ScrollTrigger)
+
+	document.addEventListener('DOMContentLoaded', (event) => {
+		gsap.registerPlugin(ScrollTrigger)
+		// gsap code here!
+	})
+
+	const container = document.querySelector('.container')
+	const sections = gsap.utils.toArray('section')
+	console.log('elements? ', container, sections)
+
+	let scrollTween = gsap.to(container, {
+		xPercent: -10 * (sections.length - 1),
+		ease: 'none',
+		scrollTrigger: {
+			trigger: '.container',
+			pin: true,
+			scrub: 1,
+			end: '+=3000'
+		}
+	})
+</script>

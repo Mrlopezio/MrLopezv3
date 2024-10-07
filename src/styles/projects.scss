@@ -1,43 +1,42 @@
 .projects {
 	// min-height: 90vh;
-	position: relative;
 	height: 750px;
-	height: auto;
 	padding-block: 5rem;
 	outline: 2px dashed yellow;
 	overflow: hidden;
+	top: 10rem;
+	height: 1800px;
 
 	&-content {
-		max-height: 700px;
+		// max-height: 700px;
+		top: 15%;
 		margin: 0 auto;
-		width: 100%;
-		overflow: hidden;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
+		width: 1200px;
+		margin: 0 auto;
+		height: 350vh;
+		// overflow: hidden;
+		// overflow-x: auto;
+		// scroll-snap-type: x mandatory;
 		-ms-overflow-style: none; /* IE and Edge */
 		scrollbar-width: none;
 		outline: 2px dashed red;
-		padding-inline: 50%;
+		// padding-inline: 50%;
+		// padding-top: 10rem;
 
 		&::-webkit-scrollbar {
 			display: none; /* Chrome, Safari, Opera */
 		}
 
 		&-slider {
-			outline: 2px dashed green;
 			display: flex;
 			gap: 3rem;
-			width: fit-content;
-			// overflow-x: auto;
+			width: calc(1200px * 3 + 80px);
+			height: fit-content;
 			// scroll-snap-type: x mandatory;
-			// outline: 2px dashed red;
-			// padding-inline: 50%;
 
-			// -ms-overflow-style: none; /* IE and Edge */
-			// scrollbar-width: none;
-			// &::-webkit-scrollbar {
-			// 	display: none; /* Chrome, Safari, Opera */
-			// }
+			outline: 2px dashed green;
+			scroll-snap-align: center;
+
 			&-item {
 				scroll-snap-align: center;
 				width: 1200px;

@@ -14,7 +14,7 @@ type Props = {
 const ProjectCard = (props: Props) => {
 	const { title, text, tags, logo, image, id, href } = props
 	const { ref, inView } = useInView({
-		threshold: 0.8
+		threshold: 0.5
 		// triggerOnce: true
 	})
 
