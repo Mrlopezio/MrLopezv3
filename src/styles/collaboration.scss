@@ -1,10 +1,11 @@
 .collaboration {
 	min-height: 100vh;
-	padding-block: 5rem;
+
+	padding-block: 8rem;
 	&-content {
 		max-width: 1200px;
-		height: 700px;
-		max-height: 700px;
+		// height: 700px;
+		// max-height: 700px;
 		margin: 0 auto;
 		display: grid;
 		grid-template-areas:
@@ -16,6 +17,13 @@
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: repeat(5, 1fr);
 		gap: 1rem;
+
+		@media (width< 768px) {
+			display: flex;
+			flex-direction: column;
+			padding: 1rem;
+		}
+
 		&-box {
 			position: relative;
 			border: 1px solid rgba(255, 255, 255, 0.2);
@@ -68,6 +76,10 @@
 				margin-top: auto;
 				align-items: center;
 				justify-content: center;
+				@media (width< 768px) {
+					gap: 1rem;
+					padding: 0;
+				}
 
 				&-item {
 					width: fit-content;
@@ -75,6 +87,12 @@
 					opacity: 0.6;
 					position: relative;
 					transition: all 0.4s ease-in-out;
+					@media (width< 768px) {
+						// height: 18px;
+						img {
+							height: 20px;
+						}
+					}
 
 					&-tooltip {
 						position: absolute;
@@ -106,6 +124,7 @@
 
 						h5 {
 							font-size: 1.2rem;
+							white-space: nowrap;
 							color: var(--white);
 						}
 					}
@@ -121,23 +140,71 @@
 				grid-area: title;
 				width: 100%;
 				overflow: hidden;
-				height: 125px;
+				@media (width< 768px) {
+					height: auto;
+				}
+
 				h2 {
 					font-size: 5rem;
 					white-space: nowrap;
+					@media (width< 768px) {
+						font-size: 3rem;
+					}
 				}
 			}
 			&.web {
 				grid-area: web;
+				@media (width< 768px) {
+					// min-height: 60dvh;
+					height: 420px;
+
+					h2,
+					p {
+						max-width: 100%;
+					}
+
+					.collaboration-content-box-image {
+						width: 70%;
+					}
+				}
 				.collaboration-content-box-stack {
 					flex-direction: column;
 				}
 			}
 			&.uiux {
 				grid-area: uiux;
+				@media (width< 768px) {
+					height: 380px;
+
+					h2,
+					p {
+						max-width: 100%;
+					}
+
+					.collaboration-content-box-image {
+						width: 80%;
+						bottom: -7rem;
+					}
+				}
+				.collaboration-content-box-stack {
+					flex-direction: column;
+				}
 			}
 			&.branding {
 				grid-area: branding;
+				@media (width< 768px) {
+					height: 240px;
+
+					h2,
+					p {
+						max-width: 60%;
+					}
+
+					.collaboration-content-box-image {
+						width: 40%;
+						bottom: 0;
+					}
+				}
 			}
 		}
 	}

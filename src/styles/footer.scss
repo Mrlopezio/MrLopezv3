@@ -1,5 +1,8 @@
 .footer {
 	padding: 2rem 0;
+	@media (width < 768px) {
+		padding: 1rem;
+	}
 	&-content {
 		display: flex;
 		gap: 1rem;
