@@ -58,7 +58,7 @@ import gsap from 'gsap'
 	import { ScrollTrigger } from 'gsap/ScrollTrigger'
 	gsap.registerPlugin(ScrollTrigger)
 
-	const slider = document.querySelector('.projects-content-slider')
+	const slider = document.querySelector('.projects-content')
 	const cards = gsap.utils.toArray('.projects-content-slider-item')
 
 	console.log('horizontal scroll >>> ', slider, cards)
@@ -69,12 +69,11 @@ import gsap from 'gsap'
 		scrollTrigger: {
 			trigger: slider,
 			pin: true,
-			scrub: 0.05,
+			scrub: 1,
 			start: `center center`,
 			end: () => {
-				return '+=3000'
-			},
-			markers: true
+				return '+=2300'},
+			// markers: true
 		}
 	})
 </script>
