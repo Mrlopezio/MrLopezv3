@@ -4,6 +4,9 @@
 	height: 3300px;
 	// max-width: 90vw;
 	// margin: 0 auto;
+	@media (width < 768px) {
+		height: 3200px;
+	}
 
 	&-content {
 		display: flex;
@@ -12,6 +15,9 @@
 		width: 1200px;
 		height: 750px;
 		// outline: 2px dashed red;
+		@media (width < 768px) {
+			width: 100vw;
+		}
 
 		&::-webkit-scrollbar {
 			display: none; /* Chrome, Safari, Opera */
@@ -26,6 +32,10 @@
 			width: 3648px;
 			height: fit-content;
 			// outline: 2px dashed green;
+			@media (width < 768px) {
+				gap: 0.5rem;
+				width: 300vw;
+			}
 
 			&-item {
 				scroll-snap-align: center;
@@ -38,6 +48,7 @@
 				@media (width < 768px) {
 					height: auto;
 					padding: 0 1rem;
+					width: 100vw;
 				}
 
 				&-info {
