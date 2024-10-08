@@ -1,7 +1,6 @@
 ---
 import '../styles/projects.scss'
 import ProjectCard from './ui/ProjectCard.tsx'
-import gsap from 'gsap'
 ---
 
 <section class="projects" id="projects">
@@ -12,41 +11,59 @@ import gsap from 'gsap'
 				id="itza"
 				title="Itza Media"
 				text="A student-focused platform where they choose their educational path based on passions and interests. Giving agency to the learners through some algorithms..."
-				tags={['Web Development', 'React/NextJs', 'Webflow', 'Motion']}
+				tags={['Web Development', 'React / NextJs', 'Webflow', 'Motion']}
 				logo="/images/logos/itza.svg"
 				image="/images/mockups/itza-mockups.png"
-				href="/"
+				links={[
+					{ text: 'Live site', url: 'https://www.itza.io' },
+					{ text: 'Lesson example', url: 'https://www.itza.io/?lesson=leatherback-turtles' },
+					{ text: 'Faq page', url: 'https://www.itza.io/faq' }
+				]}
 				client:load
 			/>
 
 			<ProjectCard
-				id="itza2"
-				title="Itza Media"
-				text="A student-focused platform where they choose their educational path based on passions and interests. Giving agency to the learners through some algorithms..."
-				tags={['Web Development', 'React/NextJs', 'Webflow', 'Motion']}
-				logo="/images/logos/itza.svg"
-				image="/images/mockups/itza-mockups.png"
-				href="/"
+				id="foxtrk"
+				title="Foxtrk"
+				text="An assistant for delivery drivers/riders and taxi drivers. Get insights from your runs, spot the average per day and when is more profitable to hir the road. Version 2.0 is on the design stage, adding a revamped design and new features, such as a weather API, special events or seasons that could boost the rider job."
+				tags={[
+					'UI/UX Design',
+					'Web Development',
+					'App Development',
+					'Databases',
+					'React / React Native',
+					'Data Visualization',
+					'Motion'
+				]}
+				logo="/images/logos/foxtrk.svg"
+				image="/images/mockups/foxtrk-mockup.png"
+				links={[
+					{ text: 'Waitlist landing', url: 'https://www.foxtrk.com' },
+					// { text: 'App (Work in progress)', url: 'https://beta.foxtrk.com' },
+					{ text: 'Web app (previous version)', url: 'https://app.foxtrk.com' }
+				]}
 				client:load
 			/>
 
 			<ProjectCard
-				id="itza3"
-				title="Itza Media"
-				text="A student-focused platform where they choose their educational path based on passions and interests. Giving agency to the learners through some algorithms..."
-				tags={['Web Development', 'React/NextJs']}
-				logo="/images/logos/itza.svg"
-				image="/images/mockups/itza-mockups.png"
-				href="/"
+				id="ComunidadPSA"
+				title="Comunidad PSA"
+				text="A website for a prestigious neighbourhood in the south of Spain, where I was delighted to carry a rebrand, also implemented a bus tracker, custom developed the website and a private area as a virtual office."
+				tags={['UI/UX Design', 'Web Development', 'React/AstroJS', 'Wordpress', 'APIs', 'Motion']}
+				logo="/images/logos/psa2.svg"
+				image="/images/mockups/psa-mockup.png"
+				links={[
+					{ text: 'Live site', url: 'https://www.comunidadpsa.es' },
+					{ text: 'Live private site', url: 'https://www.comunidadpsa.es/comunidad' },
+					{ text: 'Live bus tracker', url: 'https://comunidadpsa.es/comunidad/microbus/' }
+				]}
 				client:load
 			/>
 		</div>
 	</div>
-	
 </section>
 
 <script>
-	// import Lenis from 'lenis'
 	import gsap from 'gsap'
 	import { ScrollTrigger } from 'gsap/ScrollTrigger'
 	gsap.registerPlugin(ScrollTrigger)
@@ -65,7 +82,8 @@ import gsap from 'gsap'
 			scrub: 1,
 			start: `center center`,
 			end: () => {
-				return '+=2300'},
+				return '+=2300'
+			}
 			// markers: true
 		}
 	})

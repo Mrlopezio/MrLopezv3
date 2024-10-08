@@ -151,6 +151,7 @@
 						bottom: 1rem;
 						left: 1rem;
 						width: 160px;
+						max-height: 48px;
 						@media (width < 768px) {
 							top: 1rem;
 							right: 1rem;
@@ -159,8 +160,10 @@
 							width: 100px;
 						}
 						img {
-							width: 100%;
-							height: 100%;
+							// width: 100%;
+							height: 48px;
+							// max-height: 48px;
+							// max-width: 48px;
 						}
 					}
 				}
