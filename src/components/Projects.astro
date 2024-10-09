@@ -25,7 +25,7 @@ import ProjectCard from './ui/ProjectCard.tsx'
 			<ProjectCard
 				id="foxtrk"
 				title="Foxtrk"
-				text="An assistant for delivery drivers/riders and taxi drivers. Get insights from your runs, spot the average per day and when is more profitable to hir the road. Version 2.0 is on the design stage, adding a revamped design and new features, such as a weather API, special events or seasons that could boost the rider job."
+				text="Assistant for delivery drivers/riders. Get insights from your runs, spot the average per day and when is more profitable to hir the road. Version 2.0 is on the design stage, adding a revamped design and new features, such as a weather API, special events or seasons that could boost the rider job."
 				tags={[
 					'UI/UX Design',
 					'Web Development',
@@ -39,7 +39,7 @@ import ProjectCard from './ui/ProjectCard.tsx'
 				image="/images/mockups/foxtrk-mockup.png"
 				links={[
 					{ text: 'Waitlist landing', url: 'https://www.foxtrk.com' },
-					// { text: 'App (Work in progress)', url: 'https://beta.foxtrk.com' },
+					{ text: 'App (Work in progress)', url: 'https://beta.foxtrk.com' },
 					{ text: 'Web app (previous version)', url: 'https://app.foxtrk.com' }
 				]}
 				client:load
@@ -70,8 +70,6 @@ import ProjectCard from './ui/ProjectCard.tsx'
 
 	const slider = document.querySelector('.projects-content')
 	const cards = gsap.utils.toArray('.projects-content-slider-item')
-
-	console.log('horizontal scroll >>> ', slider, cards)
 
 	let scrollTween = gsap.to(slider, {
 		xPercent: -100 * (cards.length - 1),

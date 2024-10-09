@@ -1,16 +1,72 @@
 ---
-import '../styles/hero.scss';
-import HeroBanner from './HeroBanner.astro';
-import ButtonCTA from './ui/ButtonCTA.astro';
+import '../styles/hero.scss'
+import ButtonCTA from './ui/ButtonCTA.astro'
 ---
+
 <section class="hero" id="hero">
-    <div class="hero-content">
-        <div class="hero-heading">
-            <h1>Crafting & building ideas into <span class="hero-heading-emphasis">online</span> solutions</h1>
-        </div>
-        <div class="hero-info">
-            <p>Helping early-stage startups and small businesses to turn complicated ideas into high-performance and intuitive experiences</p>
-            <ButtonCTA text="Get in touch" href="#contact"/>
-        </div>
-    </div>
+	<div class="hero-content">
+		<div class="hero-heading" >
+			<h1>
+				Crafting & building ideas into <span class="hero-heading-emphasis">online</span> solutions
+			</h1>
+		</div>
+		<div class="hero-info">
+			<p>
+				Helping early-stage startups and small businesses to turn complicated ideas into
+				high-performance and intuitive experiences
+			</p>
+			<ButtonCTA text="Get in touch" href="#contact" />
+		</div>
+	</div>
 </section>
+
+<script>
+	import gsap from 'gsap'
+	import { ScrollTrigger } from 'gsap/ScrollTrigger'
+	gsap.registerPlugin(ScrollTrigger)
+	const h1Element = document.querySelector('.hero-heading')
+	const pElement = document.querySelector('.hero-info')
+    
+	// fade in animation
+	gsap.to(
+		h1Element,
+		{
+			opacity: 1,
+			duration: 1,
+			ease: 'Power3.easeOut'
+		}
+	)
+	gsap.to(pElement, {
+		opacity: 1,
+		duration: 1,
+		ease: 'Power3.easeOut'
+	})
+
+	// Scroll animations
+	const h1ElementTween = gsap.to(h1Element, {
+		yPercent: 30,
+		scale: 0.8,
+		opacity: 0,
+		ease: 'Power3.easeOut',
+		scrollTrigger: {
+			trigger: h1Element,
+			start: 'end top ',
+			end: 'bottom end',
+			scrub: 1
+			// markers: true
+		}
+	})
+	const pElementTween = gsap.to(pElement, {
+		yPercent: 30,
+		scale: 0.8,
+		opacity: 0,
+		ease: 'Power3.easeOut',
+		scrollTrigger: {
+			trigger: h1Element,
+			start: 'end top ',
+			end: 'bottom end',
+			scrub: 1
+			// markers: true
+		}
+	})
+</script>
