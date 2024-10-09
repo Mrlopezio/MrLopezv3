@@ -95,14 +95,20 @@
 
 			&-brands {
 				display: flex;
+				width: 150vw;
 				flex-direction: row;
 				align-items: center;
 				gap: 2rem;
 				justify-content: space-between;
+				@media (width < 768px) {
+					width: 200vw;
+				}
 				&-item {
+					opacity: 0.5;
+
 					img {
-						width: 100%;
-						height: 100%;
+						width: auto;
+						height: 40px;
 					}
 				}
 			}
