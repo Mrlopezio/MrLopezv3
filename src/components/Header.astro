@@ -63,7 +63,8 @@ import HeaderNav from './ui/HeaderNav.astro'
 		autoAlpha: 1,
 		duration: 0.6,
 		ease: 'elastic.out(1, 0.6)',
-		height: 'auto'
+		height: 'auto',
+		backgroundColor: 'rgba(0,0,0, 0.6)'
 	}).to(
 		mobileNavMenuItems,
 		{
@@ -79,7 +80,7 @@ import HeaderNav from './ui/HeaderNav.astro'
 		'-=0.5'
 	)
 
-	gsap.set(mobileNavMenu, { autoAlpha: 1, height: '60px' })
+	gsap.set(mobileNavMenu, { autoAlpha: 1, height: '70px' })
 	gsap.set(mobileNavMenuItems, { scale: 0.8, opacity: 0, y: -25 })
 
 	mobileToggle?.addEventListener('click', () => {
@@ -109,6 +110,7 @@ import HeaderNav from './ui/HeaderNav.astro'
 				scale: 1,
 				border: '1px solid transparent',
 				boxShadow: '0px 4px 16px 4px rgba(0, 0, 0, 0)',
+                backgroundColor: 'rgba(0,0,0, 0)',
 				duration: 0.8,
 				ease: 'power4.out'
 			}) // Show header
@@ -121,6 +123,8 @@ import HeaderNav from './ui/HeaderNav.astro'
 				scale: 0.8,
 				border: '1px solid rgba(255, 255, 255, 0.1)',
 				boxShadow: '4px 4px 16px 4px rgba(0, 0, 0, 0.4)',
+				backgroundColor: 'rgba(0,0,0, 0.6)',
+
 				duration: 1,
 				padding: '1rem 1.5rem',
 				ease: 'power4.out'
@@ -144,16 +148,20 @@ import HeaderNav from './ui/HeaderNav.astro'
 	toggleTl
 		.to(toggleClose, {
 			y: 0,
-            opacity: 1,
-            duration: 0.4,
+			opacity: 1,
+			duration: 0.4,
 			ease: 'elastic.out(1, 0.6)'
 		})
-		.to(toggleOpen, {
-            y: 30,
-            opacity: 0,
-            duration: 0.4,
-			ease: 'elastic.out(1, 1)'
-		},"-=0.4")
+		.to(
+			toggleOpen,
+			{
+				y: 30,
+				opacity: 0,
+				duration: 0.4,
+				ease: 'elastic.out(1, 1)'
+			},
+			'-=0.4'
+		)
 
 	toggleBtn?.addEventListener('click', () => {
 		console.log('toggleBtn clicked', toggleBtn)
