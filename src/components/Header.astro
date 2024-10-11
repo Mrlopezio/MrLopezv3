@@ -97,24 +97,6 @@ import HeaderNav from './ui/HeaderNav.astro'
 		'-=0.5'
 	)
 
-	// toggleTl
-	// 	.to(toggleClose, {
-	// 		y: 0,
-	// 		opacity: 1,
-	// 		duration: 0.4,
-	// 		ease: 'elastic.out(1, 0.6)'
-	// 	})
-	// 	.to(
-	// 		toggleOpen,
-	// 		{
-	// 			y: 30,
-	// 			opacity: 0,
-	// 			duration: 0.4,
-	// 			ease: 'elastic.out(1, 1)'
-	// 		},
-	// 		'-=0.4'
-	// 	)
-
 	gsap.set(mobileNavMenu, { autoAlpha: 1, height: '70px' })
 	gsap.set(mobileNavMenuItems, { scale: 0.8, opacity: 0, y: -25 })
 	gsap.set(toggleOpen, { y: 0, opacity: 1 })
@@ -166,25 +148,5 @@ import HeaderNav from './ui/HeaderNav.astro'
 			}) // Hide header
 		}
 	})
-
-	
-
-		// .to(toggleClose, {
-		// 	y: 0,
-		// 	opacity: 1,
-		// 	duration: 0.4,
-		// 	ease: 'elastic.out(1, 0.6)'
-		// })
-		// .to(
-		// 	toggleOpen,
-		// 	{
-		// 		y: 30,
-		// 		opacity: 0,
-		// 		duration: 0.4,
-		// 		ease: 'elastic.out(1, 1)'
-		// 	},
-		// 	'-=0.4'
-		// )
-
 
 </script>
