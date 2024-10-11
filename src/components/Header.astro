@@ -1,103 +1,77 @@
 ---
 import '../styles/header.scss'
-
-const navLinks = [
-	{ text: 'Services', href: '#collaboration', type: 'nav' },
-	{ text: 'Projects', href: '#projects', type: 'nav' },
-	{ text: 'About', href: '#about', type: 'nav' },
-	{ text: "Let's collaborate", href: '#contact', type: 'cta' }
-]
-type navLinks = {
-	text: string
-	href: string
-	type: 'nav' | 'cta'
-}
+import HeaderNav from './ui/HeaderNav.astro'
 ---
 
-<header class="header">
-	<div class="header-wrapper">
-		<nav class="header-nav">
+<header>
+	<div class="header-container">
+		<div class="header-nav">
 			<a href="/#hero" class="header-logo">
 				<img src="/images/logo.svg" alt="MrLopez Logo" class="header-logo-img" />
 			</a>
-			<ul class="header-nav-links">
-				{
-					navLinks.map((link, i) => (
-						<li class={`header-nav-links-item${link.type === 'cta' ? ' cta' : ''}`}>
-							<a href={link.href}>{link.text}</a>
-						</li>
-					))
-				}
-			</ul>
+			<HeaderNav />
 			<div class="header-nav-toggle">toggle</div>
-		</nav>
-	</div>
-	<div class="header-mobile">
-		<div class="header-mobile-overlay">
-			<div class="header-mobile-nav">
-				{
-					navLinks.map((link, i) => (
-						<div class={`header-mobile-nav-item${link.type === 'cta' ? ' cta' : ''}`}>
-							<a href={link.href}>{link.text}</a>
-						</div>
-					))
-				}
-			</div>
+		</div>
+		<div class="header-mobile">
+			<HeaderNav />
 		</div>
 	</div>
 </header>
+
 <script>
 	import gsap from 'gsap'
 
 	// Mobile menu
 	const mobileToggle = document.querySelector('.header-nav-toggle')
-	const mobileNavOverlay = document.querySelector('.header-mobile-overlay')
-	const mobileNavMenu = document.querySelector('.header-mobile-nav')
-	const mobileNavMenuItems = document.querySelector('.header-mobile-nav')
+	const mobileNavMenu = document.querySelector('.header-container')
+	const mobileNavMenuItems = document.querySelectorAll('.header-mobile .header-nav-links a')
 
 	const tl = gsap.timeline({ paused: true, reversed: true })
 
-	tl.to(mobileNavOverlay, {
-		scale: 1,
-		height: '100%',
-		width: '100%',
+	tl.to(mobileNavMenu, {
+		autoAlpha: 1,
 		duration: 0.6,
-		ease: 'power4.out'
-	}).to(
-		mobileNavMenu,
-		{
-			scale: 1,
-			duration: 0.5,
-			ease: 'power4.in'
-		},
-		'-=0.6'
-	) // Overlap this animation
+		ease: 'power4.out',
+		height: 'auto'
+	}).fromTo(
+        mobileNavMenuItems,{
+            y: 30
+        }, {
+            y: 0,
+            duration: 0.6,
+            ease: 'power4.in',
+        }
+    )
+
+	gsap.set(mobileNavMenu, { autoAlpha: 1, height: '60px' })
 
 	mobileToggle?.addEventListener('click', () => {
 		console.log('toggle click')
 		tl.reversed() ? tl.play() : tl.reverse() // Toggle animation
 	})
 
-	mobileNavMenuItems?.addEventListener('click', () => {
-		console.log('menu click')
-		tl.reversed() ? tl.play() : tl.reverse() // Toggle animation
-	})
+	mobileNavMenuItems?.forEach((anchor: any) => {
+        anchor.addEventListener('click', () => {
+		    console.log('a click', mobileNavMenuItems)
+		    tl.reversed() ? tl.play() : tl.reverse() // Toggle animation
+	    })
+    })
 
 	// Floating nav
 	document.addEventListener('scroll', () => {
-		const header = document.querySelector('nav')
+		const header = document.querySelector('.header-container')
 
 		if (window.scrollY < 250) {
 			gsap.to(header, {
 				y: 0,
-				maxWidth: '100%',
+				maxWidth: '1200px',
 				left: 0,
 				borderRadius: 0,
-				padding: 0,
+				padding: '1rem',
 				translateX: 0,
 				scale: 1,
 				border: '1px solid transparent',
-				boxShadow: '0px 4px 16px 12px rgba(0, 0, 0, 0)',
+				boxShadow: '0px 4px 16px 4px rgba(0, 0, 0, 0)',
 				duration: 0.8,
 				ease: 'power4.out'
 			}) // Show header
@@ -105,46 +79,49 @@ type navLinks = {
 		if (window.scrollY > 250) {
 			gsap.to(header, {
 				y: '1rem',
-				maxWidth: '560px',
-				borderRadius: '3rem',
+				maxWidth: '500px',
+				borderRadius: '2rem',
 				scale: 0.8,
 				border: '1px solid rgba(255, 255, 255, 0.1)',
-				boxShadow: '4px 4px 16px 12px rgba(0, 0, 0, 0.4)',
+				boxShadow: '4px 4px 16px 4px rgba(0, 0, 0, 0.4)',
 				duration: 1,
 				padding: '1rem 1.5rem',
 				ease: 'power4.out'
 			}) // Hide header
 		}
 	})
-
-	// 		<a href="/#hero" class="header-logo"
-	// 			><img src="/images/logo.svg" alt="MrLopez Logo" class="header-logo-img" /></a
-	// 		>
-	// 		<nav class="header-nav">
-	// 			<ul class="header-nav-links">
-	// 				{
-	// 					navLinks.map((link, i) => (
-	// 						<li class={`header-nav-links-item${link.type === 'cta' ? ' cta' : ''}`}>
-	// 							<a href={link.href}>{link.text}</a>
-	// 						</li>
-	// 					))
-	// 				}
-	// 			</ul>
-	// 		</nav>
-	// 		<nav class="header-nav-mobile">
-	// 			<div class="header-nav-mobile-toggle">toggle</div>
-	// 		</nav>
-	// 	</div>
-	// </header>
-	// <div class="header-nav-mobile-overlay">
-	// 	<ul class="header-nav-mobile-links">
-	// 		{
-	// 			navLinks.map((link, i) => (
-	// 				<li class={`header-nav-links-item${link.type === 'cta' ? ' cta' : ''}`}>
-	// 					<a href={link.href}>{link.text}</a>
-	// 				</li>
-	// 			))
-	// 		}
-	// 	</ul>
-	// </div>
 </script>
+<!-- // <header class="header">
+	// <div class="header-container">
+		// <nav class="header-nav">
+			// <a href="/#hero" class="header-logo">
+				// <img src="/images/logo.svg" alt="MrLopez Logo" class="header-logo-img" />
+				//
+			// </a>
+			// <ul class="header-nav-links">
+				// { -->
+<!-- //                     navLinks.map((link, i) => (
+					//                         <li class={`header-nav-links-item${link.type === 'cta' ? ' cta' : ''}`}>
+					//                             <a href={link.href}>{link.text}</a>
+					//                         </li>
+					//                     ))
+					//                 }
+					//             </ul>
+					//             <div class="header-nav-toggle">toggle</div>
+					//             <div class="header-mobile">
+					// 					<nav class="header-mobile-nav">
+					// 						{ -->
+<!-- // 							navLinks.map((link, i) => (
+					// 								<div class={`header-mobile-nav-item${link.type === 'cta' ? ' cta' : ''}`}>
+					// 									<a href={link.href}>{link.text}</a>
+					// 								</div>
+					// 							))
+					// 						}
+					//                 </nav>
+					// 	</div>
+					// </header> -->
+<!-- // }
+// 			</ul>
+// 		</nav>
+// 	</div>
+// </header> -->

@@ -1,0 +1,21 @@
+---
+type navLinks = {
+    text: string
+    href: string
+    type: 'nav' | 'cta'
+}
+const navLinks = [
+	{ text: 'Services', href: '#collaboration', type: 'nav' },
+	{ text: 'Projects', href: '#projects', type: 'nav' },
+	{ text: 'About', href: '#about', type: 'nav' },
+	{ text: "Let's collaborate", href: '#contact', type: 'cta' }
+]
+---
+
+<ul class="header-nav-links">
+    {navLinks.map((link, i) => (
+        <li class={`header-nav-links-item${link.type === 'cta' ? ' cta' : ''}`}>
+            <a href={link.href}>{link.text}</a>
+        </li>
+    ))}
+</ul>  
