@@ -10,7 +10,38 @@ import HeaderNav from './ui/HeaderNav.astro'
 				<img src="/images/logo.svg" alt="MrLopez Logo" class="header-logo-img" />
 			</a>
 			<HeaderNav />
-			<div class="header-nav-toggle">toggle</div>
+			<div class="header-nav-toggle">
+				<div class="toggle-open">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="36"
+						height="36"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.3333333333333333"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="lucide lucide-menu"
+						><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"
+						></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
+					>
+				</div>
+				<div class="toggle-close">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="36"
+						height="36"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.3333333333333333"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="lucide lucide-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+					>
+				</div>
+			</div>
 		</div>
 		<div class="header-mobile">
 			<HeaderNav />
@@ -24,26 +55,32 @@ import HeaderNav from './ui/HeaderNav.astro'
 	// Mobile menu
 	const mobileToggle = document.querySelector('.header-nav-toggle')
 	const mobileNavMenu = document.querySelector('.header-container')
-	const mobileNavMenuItems = document.querySelectorAll('.header-mobile .header-nav-links a')
+	const mobileNavMenuItems = document.querySelectorAll('.header-mobile .header-nav-links li')
 
 	const tl = gsap.timeline({ paused: true, reversed: true })
 
 	tl.to(mobileNavMenu, {
 		autoAlpha: 1,
 		duration: 0.6,
-		ease: 'power4.out',
+		ease: 'elastic.out(1, 0.6)',
 		height: 'auto'
-	}).fromTo(
-        mobileNavMenuItems,{
-            y: 30
-        }, {
-            y: 0,
-            duration: 0.6,
-            ease: 'power4.in',
-        }
-    )
+	}).to(
+		mobileNavMenuItems,
+		{
+			scale: 1,
+			opacity: 1,
+			y: 0,
+			duration: 0.5,
+			ease: 'power4.out',
+			stagger: {
+				amount: 0.2
+			}
+		},
+		'-=0.5'
+	)
 
 	gsap.set(mobileNavMenu, { autoAlpha: 1, height: '60px' })
+	gsap.set(mobileNavMenuItems, { scale: 0.8, opacity: 0, y: -25 })
 
 	mobileToggle?.addEventListener('click', () => {
 		console.log('toggle click')
@@ -51,11 +88,11 @@ import HeaderNav from './ui/HeaderNav.astro'
 	})
 
 	mobileNavMenuItems?.forEach((anchor: any) => {
-        anchor.addEventListener('click', () => {
-		    console.log('a click', mobileNavMenuItems)
-		    tl.reversed() ? tl.play() : tl.reverse() // Toggle animation
-	    })
-    })
+		anchor.addEventListener('click', () => {
+			console.log('a click', mobileNavMenuItems)
+			tl.reversed() ? tl.play() : tl.reverse() // Toggle animation
+		})
+	})
 
 	// Floating nav
 	document.addEventListener('scroll', () => {
@@ -90,38 +127,36 @@ import HeaderNav from './ui/HeaderNav.astro'
 			}) // Hide header
 		}
 	})
+
+	const toggleOpen = document.querySelector('.toggle-open') as Element
+	const toggleClose = document.querySelector('.toggle-close') as Element
+	const toggleBtn = document.querySelector('.header-nav-toggle') as Element
+
+	console.log('toggleOpen', toggleOpen)
+	console.log('toggleClose', toggleClose)
+	console.log('toggleBtn', toggleBtn)
+
+	gsap.set(toggleOpen, { y: 0, opacity: 1 })
+	gsap.set(toggleClose, { y: -30, opacity: 0 })
+
+	const toggleTl = gsap.timeline({ paused: true, reversed: true })
+
+	toggleTl
+		.to(toggleClose, {
+			y: 0,
+            opacity: 1,
+            duration: 0.4,
+			ease: 'elastic.out(1, 0.6)'
+		})
+		.to(toggleOpen, {
+            y: 30,
+            opacity: 0,
+            duration: 0.4,
+			ease: 'elastic.out(1, 1)'
+		},"-=0.4")
+
+	toggleBtn?.addEventListener('click', () => {
+		console.log('toggleBtn clicked', toggleBtn)
+		toggleTl.reversed() ? toggleTl.play() : toggleTl.reverse()
+	})
 </script>
-<!-- // <header class="header">
-	// <div class="header-container">
-		// <nav class="header-nav">
-			// <a href="/#hero" class="header-logo">
-				// <img src="/images/logo.svg" alt="MrLopez Logo" class="header-logo-img" />
-				//
-			// </a>
-			// <ul class="header-nav-links">
-				// { -->
-<!-- //                     navLinks.map((link, i) => (
-					//                         <li class={`header-nav-links-item${link.type === 'cta' ? ' cta' : ''}`}>
-					//                             <a href={link.href}>{link.text}</a>
-					//                         </li>
-					//                     ))
-					//                 }
-					//             </ul>
-					//             <div class="header-nav-toggle">toggle</div>
-					//             <div class="header-mobile">
-					// 					<nav class="header-mobile-nav">
-					// 						{ -->
-<!-- // 							navLinks.map((link, i) => (
-					// 								<div class={`header-mobile-nav-item${link.type === 'cta' ? ' cta' : ''}`}>
-					// 									<a href={link.href}>{link.text}</a>
-					// 								</div>
-					// 							))
-					// 						}
-					//                 </nav>
-					// 	</div>
-					// </header> -->
-<!-- // }
-// 			</ul>
-// 		</nav>
-// 	</div>
-// </header> -->
