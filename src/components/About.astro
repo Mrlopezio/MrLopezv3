@@ -27,7 +27,7 @@ import '../styles/about.scss';
             <div class="about-content-stats-info">
                 <div class="about-content-stats-item">
                     <h3>Projects</h3>
-                    <h4>30+</h4>
+                    <div class="counter"><h4>30</h4><h5>+</h5></div>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@ import '../styles/about.scss';
             <div class="about-content-stats-info">
                 <div class="about-content-stats-item">
                     <h3>Experience</h3>
-                    <h4>+9 years</h4>
+                    <div class="counter"><h4>+9 </h4><h5>years</h5></div>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@ import '../styles/about.scss';
             <div class="about-content-stats-info">
                 <div class="about-content-stats-item">
                     <h3>Countries worked</h3>
-                    <h4>4</h4>
+                    <div class="counter"><h4>4</h4></div>
                 </div>
             </div>
         </div>
@@ -51,8 +51,44 @@ import '../styles/about.scss';
             <div class="about-content-stats-info">
                 <div class="about-content-stats-item">
                     <h3>Passion</h3>
-                    <h4>1000%</h4>
+                    <div class="counter"><h4>1000</h4><h5>%</h5></div>
                 </div>
             </div>
         </div>
 </section>
+
+<script>
+
+import gsap from 'gsap'
+
+const statsItems = document.querySelectorAll('.about-content-stats-item h4')
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const target = entry.target as HTMLElement
+      const finalValue = parseInt(target.textContent?.replace(/\D/g, '') || '0') // Extract numeric value
+      gsap.fromTo(target, {
+        textContent: 0
+      }, {
+        textContent: finalValue,
+        duration: 2,
+        ease: 'power4.out',
+        snap: { textContent: 1 }, // Snap to whole numbers
+        onUpdate: function() {
+          target.textContent = Math.floor(Number(target.textContent)).toString() + (target.textContent?.replace(/\d+/g, '') || '')
+        }
+      })
+      observer.unobserve(entry.target) // Stops observing once the animation is triggered
+    }
+  })
+}, {
+  threshold: 0.1 // Adjust based on when you want the animation to trigger
+})
+
+statsItems.forEach(item => {
+  observer.observe(item)
+})
+
+
+</script>
