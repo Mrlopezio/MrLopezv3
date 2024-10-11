@@ -52,10 +52,14 @@ import HeaderNav from './ui/HeaderNav.astro'
 <script>
 	import gsap from 'gsap'
 
+	let isOpen = false
 	// Mobile menu
 	const mobileToggle = document.querySelector('.header-nav-toggle')
 	const mobileNavMenu = document.querySelector('.header-container')
 	const mobileNavMenuItems = document.querySelectorAll('.header-mobile .header-nav-links li')
+	const toggleOpen = document.querySelector('.toggle-open') as Element
+	const toggleClose = document.querySelector('.toggle-close') as Element
+	const toggleBtn = document.querySelector('.header-nav-toggle') as Element
 
 	const tl = gsap.timeline({ paused: true, reversed: true })
 
@@ -65,7 +69,20 @@ import HeaderNav from './ui/HeaderNav.astro'
 		ease: 'elastic.out(1, 0.6)',
 		height: 'auto',
 		backgroundColor: 'rgba(0,0,0, 0.6)'
-	}).to(
+	}).to(toggleOpen,{
+        y: 30,
+        opacity: 0,
+        duration: 0.4,
+        ease: 'elastic.out(1, 1)'
+    },'-=0.4').to(
+			toggleClose, {
+			y: 0,
+			opacity: 1,
+			duration: 0.5,
+			ease: 'elastic.out(1, 0.6)'
+		},'-=0.4')
+    
+    .to(
 		mobileNavMenuItems,
 		{
 			scale: 1,
@@ -80,19 +97,38 @@ import HeaderNav from './ui/HeaderNav.astro'
 		'-=0.5'
 	)
 
+	// toggleTl
+	// 	.to(toggleClose, {
+	// 		y: 0,
+	// 		opacity: 1,
+	// 		duration: 0.4,
+	// 		ease: 'elastic.out(1, 0.6)'
+	// 	})
+	// 	.to(
+	// 		toggleOpen,
+	// 		{
+	// 			y: 30,
+	// 			opacity: 0,
+	// 			duration: 0.4,
+	// 			ease: 'elastic.out(1, 1)'
+	// 		},
+	// 		'-=0.4'
+	// 	)
+
 	gsap.set(mobileNavMenu, { autoAlpha: 1, height: '70px' })
 	gsap.set(mobileNavMenuItems, { scale: 0.8, opacity: 0, y: -25 })
+	gsap.set(toggleOpen, { y: 0, opacity: 1 })
+	gsap.set(toggleClose, { y: -30, opacity: 0 })
 
-	mobileToggle?.addEventListener('click', () => {
+	const toggleMenu = () => {
 		console.log('toggle click')
 		tl.reversed() ? tl.play() : tl.reverse() // Toggle animation
-	})
+	}
 
-	mobileNavMenuItems?.forEach((anchor: any) => {
-		anchor.addEventListener('click', () => {
-			console.log('a click', mobileNavMenuItems)
-			tl.reversed() ? tl.play() : tl.reverse() // Toggle animation
-		})
+	mobileToggle?.addEventListener('click', toggleMenu)
+
+	mobileNavMenuItems?.forEach((anchor) => {
+		anchor.addEventListener('click', toggleMenu)
 	})
 
 	// Floating nav
@@ -110,7 +146,7 @@ import HeaderNav from './ui/HeaderNav.astro'
 				scale: 1,
 				border: '1px solid transparent',
 				boxShadow: '0px 4px 16px 4px rgba(0, 0, 0, 0)',
-                backgroundColor: 'rgba(0,0,0, 0)',
+				backgroundColor: 'rgba(0,0,0, 0)',
 				duration: 0.8,
 				ease: 'power4.out'
 			}) // Show header
@@ -124,7 +160,6 @@ import HeaderNav from './ui/HeaderNav.astro'
 				border: '1px solid rgba(255, 255, 255, 0.1)',
 				boxShadow: '4px 4px 16px 4px rgba(0, 0, 0, 0.4)',
 				backgroundColor: 'rgba(0,0,0, 0.6)',
-
 				duration: 1,
 				padding: '1rem 1.5rem',
 				ease: 'power4.out'
@@ -132,39 +167,24 @@ import HeaderNav from './ui/HeaderNav.astro'
 		}
 	})
 
-	const toggleOpen = document.querySelector('.toggle-open') as Element
-	const toggleClose = document.querySelector('.toggle-close') as Element
-	const toggleBtn = document.querySelector('.header-nav-toggle') as Element
+	
 
-	console.log('toggleOpen', toggleOpen)
-	console.log('toggleClose', toggleClose)
-	console.log('toggleBtn', toggleBtn)
+		// .to(toggleClose, {
+		// 	y: 0,
+		// 	opacity: 1,
+		// 	duration: 0.4,
+		// 	ease: 'elastic.out(1, 0.6)'
+		// })
+		// .to(
+		// 	toggleOpen,
+		// 	{
+		// 		y: 30,
+		// 		opacity: 0,
+		// 		duration: 0.4,
+		// 		ease: 'elastic.out(1, 1)'
+		// 	},
+		// 	'-=0.4'
+		// )
 
-	gsap.set(toggleOpen, { y: 0, opacity: 1 })
-	gsap.set(toggleClose, { y: -30, opacity: 0 })
 
-	const toggleTl = gsap.timeline({ paused: true, reversed: true })
-
-	toggleTl
-		.to(toggleClose, {
-			y: 0,
-			opacity: 1,
-			duration: 0.4,
-			ease: 'elastic.out(1, 0.6)'
-		})
-		.to(
-			toggleOpen,
-			{
-				y: 30,
-				opacity: 0,
-				duration: 0.4,
-				ease: 'elastic.out(1, 1)'
-			},
-			'-=0.4'
-		)
-
-	toggleBtn?.addEventListener('click', () => {
-		console.log('toggleBtn clicked', toggleBtn)
-		toggleTl.reversed() ? toggleTl.play() : toggleTl.reverse()
-	})
 </script>
