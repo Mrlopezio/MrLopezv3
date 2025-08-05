@@ -16,8 +16,19 @@ const { title = 'MrLopez Web Development' } = Astro.props
 			content="Add a developer and/or designer to complement and enhance your workflow."
 		/>
 		<meta name="author" content="MrLopez" />
-		<meta name="keywords" content="web development, motion, design, ui,ux"/>
+		<meta name="keywords" content="web development, motion, design, ui,ux" />
 		<title>{title}</title>
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-JF00ZN2VCB"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || []
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag('js', new Date())
+			gtag('config', 'G-JF00ZN2VCB')
+		</script>
 	</head>
 	<body>
 		<Header />
@@ -25,27 +36,20 @@ const { title = 'MrLopez Web Development' } = Astro.props
 			<slot />
 		</main>
 		<Footer />
+
+		<!-- Lenis smooth scrolling -->
+		<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+		<script is:inline>
+			const lenis = new Lenis({
+				smoothWheel: true
+			})
+
+			function raf(time) {
+				lenis.raf(time)
+				requestAnimationFrame(raf)
+			}
+
+			requestAnimationFrame(raf)
+		</script>
 	</body>
 </html>
-<script
-	defer
-	src="https://sitebehaviour-cdn.fra1.cdn.digitaloceanspaces.com/index.min.js?sitebehaviour-secret=fd56fcd8-8769-4ea2-aa3b-f9b66b07f69b"
-></script>
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-<script>
-	import Lenis from 'lenis'
-
-	const lenis = new Lenis({
-		smoothWheel: true
-	})
-
-	// lenis.on('scroll', (e) => {
-	// })
-
-	function raf(time: number) {
-		lenis.raf(time)
-		requestAnimationFrame(raf)
-	}
-
-	requestAnimationFrame(raf)
-</script>
