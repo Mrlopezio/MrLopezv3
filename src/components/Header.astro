@@ -52,59 +52,48 @@ import HeaderNav from './ui/HeaderNav.astro'
 <script>
 	import gsap from 'gsap'
 
-	let isOpen = false
 	// Mobile menu
 	const mobileToggle = document.querySelector('.header-nav-toggle')
 	const mobileNavMenu = document.querySelector('.header-container')
 	const mobileNavMenuItems = document.querySelectorAll('.header-mobile .header-nav-links li')
 	const toggleOpen = document.querySelector('.toggle-open') as Element
 	const toggleClose = document.querySelector('.toggle-close') as Element
-	const toggleBtn = document.querySelector('.header-nav-toggle') as Element
 
 	const tl = gsap.timeline({ paused: true, reversed: true })
 
 	tl.to(mobileNavMenu, {
 		autoAlpha: 1,
 		duration: 0.6,
-		ease: 'elastic.out(1, 0.6)',
+		ease: 'power4.out',
 		height: 'auto',
-		backgroundColor: 'rgba(0,0,0, 0.6)'
-	}).to(toggleOpen,{
-        y: 30,
-        opacity: 0,
-        duration: 0.4,
-        ease: 'elastic.out(1, 1)'
-    },'-=0.4').to(
-			toggleClose, {
-			y: 0,
-			opacity: 1,
-			duration: 0.5,
-			ease: 'elastic.out(1, 0.6)'
-		},'-=0.4')
-    
-    .to(
-		mobileNavMenuItems,
-		{
-			scale: 1,
-			opacity: 1,
-			y: 0,
-			duration: 0.5,
-			ease: 'power4.out',
-			stagger: {
-				amount: 0.2
-			}
-		},
-		'-=0.5'
-	)
+		backgroundColor: 'rgba(10, 10, 10, 0.95)',
+		backdropFilter: 'blur(20px)'
+	}).to(toggleOpen, {
+		y: 30,
+		opacity: 0,
+		duration: 0.4,
+		ease: 'power4.out'
+	}, '-=0.4').to(toggleClose, {
+		y: 0,
+		opacity: 1,
+		duration: 0.5,
+		ease: 'power4.out'
+	}, '-=0.4').to(mobileNavMenuItems, {
+		scale: 1,
+		opacity: 1,
+		y: 0,
+		duration: 0.5,
+		ease: 'power4.out',
+		stagger: { amount: 0.2 }
+	}, '-=0.5')
 
-	gsap.set(mobileNavMenu, { autoAlpha: 1, height: '70px' })
-	gsap.set(mobileNavMenuItems, { scale: 0.8, opacity: 0, y: -25 })
+	gsap.set(mobileNavMenu, { autoAlpha: 1, height: '60px' })
+	gsap.set(mobileNavMenuItems, { scale: 0.95, opacity: 0, y: -15 })
 	gsap.set(toggleOpen, { y: 0, opacity: 1 })
 	gsap.set(toggleClose, { y: -30, opacity: 0 })
 
 	const toggleMenu = () => {
-		console.log('toggle click')
-		tl.reversed() ? tl.play() : tl.reverse() // Toggle animation
+		tl.reversed() ? tl.play() : tl.reverse()
 	}
 
 	mobileToggle?.addEventListener('click', toggleMenu)
@@ -113,40 +102,37 @@ import HeaderNav from './ui/HeaderNav.astro'
 		anchor.addEventListener('click', toggleMenu)
 	})
 
-	// Floating nav
+	// Floating nav - minimal glass effect on scroll
 	document.addEventListener('scroll', () => {
 		const header = document.querySelector('.header-container')
 
-		if (window.scrollY < 250) {
+		if (window.scrollY < 100) {
 			gsap.to(header, {
 				y: 0,
 				maxWidth: '1200px',
-				left: 0,
 				borderRadius: 0,
-				padding: '1rem',
-				translateX: 0,
-				scale: 1,
+				padding: '1.25rem 1.5rem',
 				border: '1px solid transparent',
-				boxShadow: '0px 4px 16px 4px rgba(0, 0, 0, 0)',
-				backgroundColor: 'rgba(0,0,0, 0)',
-				duration: 0.8,
+				boxShadow: 'none',
+				backgroundColor: 'rgba(10, 10, 10, 0)',
+				backdropFilter: 'blur(0px)',
+				duration: 0.6,
 				ease: 'power4.out'
-			}) // Show header
+			})
 		}
-		if (window.scrollY > 250) {
+		if (window.scrollY >= 100) {
 			gsap.to(header, {
-				y: '1rem',
-				maxWidth: '500px',
-				borderRadius: '2rem',
-				scale: 0.8,
-				border: '1px solid rgba(255, 255, 255, 0.1)',
-				boxShadow: '4px 4px 16px 4px rgba(0, 0, 0, 0.4)',
-				backgroundColor: 'rgba(0,0,0, 0.6)',
-				duration: 1,
-				padding: '1rem 1.5rem',
+				y: '0.75rem',
+				maxWidth: '580px',
+				borderRadius: '3rem',
+				border: '1px solid rgba(255, 255, 255, 0.06)',
+				boxShadow: '0 4px 30px rgba(0, 0, 0, 0.3)',
+				backgroundColor: 'rgba(10, 10, 10, 0.8)',
+				backdropFilter: 'blur(20px)',
+				duration: 0.8,
+				padding: '0.75rem 1.5rem',
 				ease: 'power4.out'
-			}) // Hide header
+			})
 		}
 	})
-
 </script>

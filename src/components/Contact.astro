@@ -3,42 +3,69 @@ import '../styles/contact.scss'
 import ContactForm from './ui/ContactForm'
 ---
 <section class="contact" id="contact">
+	<div class="contact-header">
+		<span class="contact-header-label">Contact</span>
+		<h1 class="contact-header-title">Interested in a collaboration?</h1>
+		<p class="contact-header-desc">
+			I listen and provide the techy side your business may need with no jargons or wordy stuff,
+			straight to the point. You won't have to hire a full team.
+		</p>
+	</div>
+
 	<div class="contact-content">
 		<div class="contact-content-info">
-			<!-- <img src="/images/contact-icon.svg" alt="Contact icon"> -->
-			<h2>Insterested in a collaboration?</h2>
-			<p>
-				I listen and provide the techy side your business may need with no jargons or wordy stuff,
-				straight to the point to reach the right public out for your business. You won't have to
-				hire a full team.
-			</p>
-
 			<div class="contact-content-info-social">
-				<div class="contact-content-info-social-item">
-					<a href="mailto:hello@mrlopez.io" target="_blank"
-				rel="nofollow noopener noreferrer external"><img src="/images/apps/mail.svg" alt="email" /></a>
-				</div>
-				<div class="contact-content-info-social-item">
-					<a href="https://www.instagram.com/mrlopezio/" target="_blank"
-				rel="nofollow noopener noreferrer external"><img src="/images/apps/instagram.svg" alt="instagram" /></a>
-				</div>
-				<div class="contact-content-info-social-item">
-					<a href="https://www.linkedin.com/in/mrlopezuk" target="_blank"
-				rel="nofollow noopener noreferrer external"><img src="/images/apps/linkedin.svg" alt="linkedin" /></a>
-				</div>
-				<div class="contact-content-info-social-item">
-					<a href="https://mrlopezwebs.slack.com/archives/D05SKBS7W48" target="_blank"
-				rel="nofollow noopener noreferrer external"><img src="/images/apps/slack.svg" alt="slack" /></a>
-				</div>
-				<div class="contact-content-info-social-item">
-					<a href="https://wa.me/447963772339" target="_blank"
-				rel="nofollow noopener noreferrer external"><img src="/images/apps/whatsapp.svg" alt="whatsapp" /></a>
-				</div>
+				<a href="mailto:hello@mrlopez.io" target="_blank" rel="nofollow noopener noreferrer external" class="contact-social-link">
+					<img src="/images/apps/mail.svg" alt="email" />
+				</a>
+				<a href="https://www.instagram.com/mrlopezio/" target="_blank" rel="nofollow noopener noreferrer external" class="contact-social-link">
+					<img src="/images/apps/instagram.svg" alt="instagram" />
+				</a>
+				<a href="https://www.linkedin.com/in/mrlopezuk" target="_blank" rel="nofollow noopener noreferrer external" class="contact-social-link">
+					<img src="/images/apps/linkedin.svg" alt="linkedin" />
+				</a>
+				<a href="https://mrlopezwebs.slack.com/archives/D05SKBS7W48" target="_blank" rel="nofollow noopener noreferrer external" class="contact-social-link">
+					<img src="/images/apps/slack.svg" alt="slack" />
+				</a>
+				<a href="https://wa.me/447963772339" target="_blank" rel="nofollow noopener noreferrer external" class="contact-social-link">
+					<img src="/images/apps/whatsapp.svg" alt="whatsapp" />
+				</a>
 			</div>
 		</div>
 		<div class="contact-content-form">
-            <ContactForm client:load/>
+			<ContactForm client:load/>
 		</div>
 	</div>
 </section>
 
+<script>
+	import gsap from 'gsap'
+	import { ScrollTrigger } from 'gsap/ScrollTrigger'
+	gsap.registerPlugin(ScrollTrigger)
+
+	const contactHeader = document.querySelector('.contact-header')
+	gsap.from(contactHeader, {
+		opacity: 0,
+		y: 40,
+		ease: 'power3.out',
+		scrollTrigger: {
+			trigger: contactHeader,
+			start: 'top 85%',
+			end: 'top 55%',
+			scrub: 1
+		}
+	})
+
+	const contactContent = document.querySelector('.contact-content')
+	gsap.from(contactContent, {
+		opacity: 0,
+		y: 50,
+		ease: 'power3.out',
+		scrollTrigger: {
+			trigger: contactContent,
+			start: 'top 85%',
+			end: 'top 55%',
+			scrub: 1
+		}
+	})
+</script>

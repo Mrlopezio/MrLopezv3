@@ -1,71 +1,59 @@
 ---
-import '../styles/hero.scss'
+import '../styles/heroBanner.scss'
 ---
 
-<section class="hero-banner">
-	<div class="hero-banner-content">
-		<h2 class="hero-banner-content-heading">Brands that trusted me...</h2>
-		<div class="hero-banner-content-brands">
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo1.svg" alt="Brands 1" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo2.svg" alt="Brands 2" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo3.svg" alt="Brands 3" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo4.svg" alt="Brands 4" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo5.svg" alt="Brands 6" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo6.svg" alt="Brands 7" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo7.svg" alt="Brands 8" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo8.svg" alt="Brands 9" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo9.svg" alt="Brands 10" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo10.svg" alt="Brands 10" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo11.svg" alt="Brands 10" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo12.svg" alt="Brands 10" />
-			</div>
-			<div class="hero-banner-content-brands-item">
-				<img src="/images/banner/logo13.svg" alt="Brands 10" />
-			</div>
+<section class="marquee-section">
+	<div class="marquee-label">Trusted by</div>
+	<div class="marquee">
+		<div class="marquee-track">
+			<div class="marquee-item"><img src="/images/banner/logo1.svg" alt="Brand 1" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo2.svg" alt="Brand 2" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo3.svg" alt="Brand 3" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo4.svg" alt="Brand 4" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo5.svg" alt="Brand 5" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo6.svg" alt="Brand 6" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo7.svg" alt="Brand 7" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo8.svg" alt="Brand 8" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo9.svg" alt="Brand 9" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo10.svg" alt="Brand 10" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo11.svg" alt="Brand 11" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo12.svg" alt="Brand 12" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo13.svg" alt="Brand 13" /></div>
+			<!-- Duplicate for seamless loop -->
+			<div class="marquee-item"><img src="/images/banner/logo1.svg" alt="Brand 1" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo2.svg" alt="Brand 2" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo3.svg" alt="Brand 3" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo4.svg" alt="Brand 4" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo5.svg" alt="Brand 5" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo6.svg" alt="Brand 6" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo7.svg" alt="Brand 7" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo8.svg" alt="Brand 8" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo9.svg" alt="Brand 9" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo10.svg" alt="Brand 10" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo11.svg" alt="Brand 11" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo12.svg" alt="Brand 12" /></div>
+			<div class="marquee-item"><img src="/images/banner/logo13.svg" alt="Brand 13" /></div>
 		</div>
 	</div>
 </section>
-<script>
 
+<script>
 	import gsap from 'gsap'
 	import { ScrollTrigger } from 'gsap/ScrollTrigger'
 	gsap.registerPlugin(ScrollTrigger)
 
-	const brandsContainer = document.querySelector('.hero-banner-content-brands')
+	const marqueeSection = document.querySelector('.marquee-section')
 
-	gsap.to(brandsContainer, {
-		xPercent: -50,
-		ease: 'none',
+	gsap.from(marqueeSection, {
+		opacity: 0,
+		y: 30,
+		duration: 1,
+		ease: 'power3.out',
 		scrollTrigger: {
-			trigger: brandsContainer,
-			start: '150px bottom',
-			end: 'top top',
-			scrub: 0.5,
-			// markers: true
+			trigger: marqueeSection,
+			start: 'top 90%',
+			end: 'top 60%',
+			scrub: 1
 		}
-	}
-)
+	})
 </script>

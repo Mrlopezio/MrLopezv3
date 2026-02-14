@@ -67,18 +67,21 @@ small {
 h1 {
 	font-family: 'FiraSansExtraCondensed', sans-serif;
 	font-weight: 100;
-	font-size: 6rem;
-	line-height: 110%;
+	font-size: 7rem;
+	line-height: 100%;
+	letter-spacing: -0.02em;
 	@media (width< 768px) {
-		font-size: 3rem;
+		font-size: 3.5rem;
 	}
 }
 h2 {
 	font-family: 'FiraSansExtraCondensed', sans-serif;
 	font-weight: 100;
-	font-size: 3rem;
+	font-size: 3.5rem;
+	line-height: 110%;
+	letter-spacing: -0.01em;
 	@media (width< 768px) {
-		font-size: 2rem;
+		font-size: 2.2rem;
 	}
 }
 h3 {
@@ -88,9 +91,10 @@ h3 {
 }
 p {
 	font-family: 'FiraSans', sans-serif;
-	font-size: 1.2rem;
-	font-weight: 100;
-	line-height: 125%;
+	font-size: 1.1rem;
+	font-weight: 300;
+	line-height: 160%;
+	color: var(--text-secondary);
 	@media (width< 768px) {
 		font-size: 1rem;
 	}
@@ -99,13 +103,13 @@ a {
 	font-family: 'FiraSans', sans-serif;
 	color: var(--primary);
 	text-decoration: none;
-	transition: all 0.2s ease-in-out;
+	transition: all 0.3s var(--ease-out-expo);
 	&:hover {
 		color: var(--primary);
 		text-decoration: underline;
 	}
 }
 b {
-	font-weight: 300;
-	filter: brightness(1.2);
+	font-weight: 400;
+	color: var(--text);
 }

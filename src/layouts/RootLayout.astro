@@ -16,7 +16,8 @@ const { title = 'MrLopez Web Development' } = Astro.props
 			content="Add a developer and/or designer to complement and enhance your workflow."
 		/>
 		<meta name="author" content="MrLopez" />
-		<meta name="keywords" content="web development, motion, design, ui,ux" />
+		<meta name="keywords" content="web development, motion, design, ui, ux" />
+		<meta name="theme-color" content="#0a0a0a" />
 		<title>{title}</title>
 
 		<!-- Google tag (gtag.js) -->
@@ -37,10 +38,12 @@ const { title = 'MrLopez Web Development' } = Astro.props
 		</main>
 		<Footer />
 
-		<!-- Lenis smooth scrolling -->
+		<!-- Lenis smooth scrolling + GSAP integration -->
 		<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 		<script is:inline>
 			const lenis = new Lenis({
+				duration: 1.2,
+				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 				smoothWheel: true
 			})
 

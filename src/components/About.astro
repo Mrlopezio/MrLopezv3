@@ -3,92 +3,138 @@ import '../styles/about.scss';
 ---
 
 <section class="about" id="about">
-    <div class="about-content">
-        <div class="about-content-bg">
-            <img src="/images/test-squares.svg" alt="bg"/>
-        </div>
-        <div class="about-content-title">
-            <h2>A bit about me</h2>
-        </div>
-        <div class="about-content-image">
-            <img src="/images/mypic.png" alt="myself"/>
-        </div>
-        <div class="about-content-info">
-            <p>With years of experience in IT and web design, I <b>bring your ideas</b> to life seamlessly. My detailed and efficient workflow ensures you can enjoy your <b>site live within a few days</b>, thanks to rapid iterations and reviews.</p>
-            <p>From micro-interactions to complex page transitions, I add smooth, tailored animations that enhance user engagement and elevate your product's appeal. <b>Handling the entire process</b> from design to semantic and efficient code, I deploy your project with clean code and best practices, ensuring it's ready to scale in the future.                I prioritize mobile visitors, ensuring your content is seamlessly accessible across all devices. Your site will excel in <b>performance</b>, <b>accessibility</b>, <b>best practices</b>, and SEO, offering a top-notch user experience.</p>
-            <p>Experience how design and development troubles disappear, leaving only a harmonious and effective online presence. Let's work together to create a website that truly reflects your vision and meets your business goals.</p>
-            <h3>Our Collaboration</h3>
-            <p>I believe in <b>open</b>, transparent communication and a collaborative approach. We'll work closely together, keeping you involved and informed at every step, ensuring your feedback shapes the final product. Your satisfaction and success are my top priorities. Let's make your online presence extraordinary!</p>
-        </div>
-    </div>
-    
-    <div class="about-stats">
-        <div class="about-stats-item">
-            <div class="about-content-stats-info">
-                <div class="about-content-stats-item">
-                    <h3>Projects</h3>
-                    <div class="counter"><h4>30</h4><h5>+</h5></div>
-                </div>
-            </div>
-        </div>
-        <div class="about-stats-item">
-            <div class="about-content-stats-info">
-                <div class="about-content-stats-item">
-                    <h3>Experience</h3>
-                    <div class="counter"><h4>+9 </h4><h5>years</h5></div>
-                </div>
-            </div>
-        </div>
-        <div class="about-stats-item">
-            <div class="about-content-stats-info">
-                <div class="about-content-stats-item">
-                    <h3>Countries worked</h3>
-                    <div class="counter"><h4>4</h4></div>
-                </div>
-            </div>
-        </div>
-        <div class="about-stats-item">
-            <div class="about-content-stats-info">
-                <div class="about-content-stats-item">
-                    <h3>Passion</h3>
-                    <div class="counter"><h4>1000</h4><h5>%</h5></div>
-                </div>
-            </div>
-        </div>
+	<div class="about-header">
+		<span class="about-header-label">About</span>
+		<h1 class="about-header-title">A bit about me</h1>
+	</div>
+
+	<div class="about-content">
+		<div class="about-content-main">
+			<div class="about-content-info">
+				<p>With years of experience in IT and web design, I <b>bring your ideas</b> to life seamlessly. My detailed and efficient workflow ensures you can enjoy your <b>site live within a few days</b>, thanks to rapid iterations and reviews.</p>
+				<p>From micro-interactions to complex page transitions, I add smooth, tailored animations that enhance user engagement and elevate your product's appeal. <b>Handling the entire process</b> from design to semantic and efficient code, I deploy your project with clean code and best practices, ensuring it's ready to scale in the future.</p>
+				<p>I prioritize mobile visitors, ensuring your content is seamlessly accessible across all devices. Your site will excel in <b>performance</b>, <b>accessibility</b>, <b>best practices</b>, and SEO, offering a top-notch user experience.</p>
+			</div>
+			<div class="about-content-image">
+				<img src="/images/mypic.png" alt="myself"/>
+			</div>
+		</div>
+		<div class="about-content-collab">
+			<h3>Our Collaboration</h3>
+			<p>I believe in <b>open</b>, transparent communication and a collaborative approach. We'll work closely together, keeping you involved and informed at every step, ensuring your feedback shapes the final product. Your satisfaction and success are my top priorities.</p>
+		</div>
+	</div>
+
+	<div class="about-stats">
+		<div class="about-stats-item">
+			<h3>Projects</h3>
+			<div class="counter"><h4>30</h4><h5>+</h5></div>
+		</div>
+		<div class="about-stats-item">
+			<h3>Experience</h3>
+			<div class="counter"><h4>+9 </h4><h5>years</h5></div>
+		</div>
+		<div class="about-stats-item">
+			<h3>Countries</h3>
+			<div class="counter"><h4>4</h4></div>
+		</div>
+		<div class="about-stats-item">
+			<h3>Passion</h3>
+			<div class="counter"><h4>1000</h4><h5>%</h5></div>
+		</div>
+	</div>
 </section>
 
 <script>
-
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 
-const statsItems = document.querySelectorAll('.about-content-stats-item h4')
+// Header reveal
+const aboutHeader = document.querySelector('.about-header')
+gsap.from(aboutHeader, {
+	opacity: 0,
+	y: 40,
+	ease: 'power3.out',
+	scrollTrigger: {
+		trigger: aboutHeader,
+		start: 'top 85%',
+		end: 'top 55%',
+		scrub: 1
+	}
+})
+
+// Content reveal
+const aboutContent = document.querySelector('.about-content')
+gsap.from(aboutContent, {
+	opacity: 0,
+	y: 50,
+	ease: 'power3.out',
+	scrollTrigger: {
+		trigger: aboutContent,
+		start: 'top 85%',
+		end: 'top 50%',
+		scrub: 1
+	}
+})
+
+// Image parallax
+const aboutImage = document.querySelector('.about-content-image')
+if (aboutImage) {
+	gsap.from(aboutImage, {
+		yPercent: 15,
+		opacity: 0,
+		ease: 'power3.out',
+		scrollTrigger: {
+			trigger: aboutContent,
+			start: 'top 80%',
+			end: 'top 40%',
+			scrub: 1
+		}
+	})
+}
+
+// Stats counter animation
+const statsItems = document.querySelectorAll('.about-stats-item h4')
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const target = entry.target as HTMLElement
-      const finalValue = parseInt(target.textContent?.replace(/\D/g, '') || '0') // Extract numeric value
-      gsap.fromTo(target, {
-        textContent: 0
-      }, {
-        textContent: finalValue,
-        duration: 2,
-        ease: 'power4.out',
-        snap: { textContent: 1 }, // Snap to whole numbers
-        onUpdate: function() {
-          target.textContent = Math.floor(Number(target.textContent)).toString() + (target.textContent?.replace(/\d+/g, '') || '')
-        }
-      })
-      observer.unobserve(entry.target) // Stops observing once the animation is triggered
-    }
-  })
+	entries.forEach(entry => {
+		if (entry.isIntersecting) {
+			const target = entry.target as HTMLElement
+			const finalValue = parseInt(target.textContent?.replace(/\D/g, '') || '0')
+			gsap.fromTo(target, {
+				textContent: 0
+			}, {
+				textContent: finalValue,
+				duration: 2,
+				ease: 'power4.out',
+				snap: { textContent: 1 },
+				onUpdate: function() {
+					target.textContent = Math.floor(Number(target.textContent)).toString() + (target.textContent?.replace(/\d+/g, '') || '')
+				}
+			})
+			observer.unobserve(entry.target)
+		}
+	})
 }, {
-  threshold: 0.1 // Adjust based on when you want the animation to trigger
+	threshold: 0.1
 })
 
 statsItems.forEach(item => {
-  observer.observe(item)
+	observer.observe(item)
 })
 
-
+// Stats reveal
+const statsRow = document.querySelector('.about-stats')
+gsap.from(statsRow, {
+	opacity: 0,
+	y: 30,
+	ease: 'power3.out',
+	scrollTrigger: {
+		trigger: statsRow,
+		start: 'top 90%',
+		end: 'top 60%',
+		scrub: 1
+	}
+})
 </script>

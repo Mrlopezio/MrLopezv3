@@ -4,61 +4,110 @@
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	// min-height: 600px;
 	position: relative;
 	width: 100%;
 	overflow: hidden;
 
-	// @media (width< 768px) {
-	// 	height: 100dvh;
-	// }
+	&-bg {
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			ellipse at 50% 0%,
+			var(--primary-glow) 0%,
+			transparent 60%
+		);
+		pointer-events: none;
+	}
 
 	&-content {
+		position: relative;
 		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
+		flex-direction: column;
+		align-items: center;
 		justify-content: center;
-		height: 60vh;
 		text-align: center;
-		max-width: 1200px;
+		max-width: 900px;
 		margin: 0 auto;
-		gap: 4rem;
+		padding: 0 2rem;
+		gap: 2rem;
 		@media (width< 768px) {
-			padding: 1rem;
-			flex-direction: column;
-			gap: 0.5rem;
+			padding: 0 1.5rem;
+			gap: 1.5rem;
+		}
+	}
+
+	&-label {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		font-weight: 300;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--text-secondary);
+
+		&-dot {
+			width: 6px;
+			height: 6px;
+			border-radius: 50%;
+			background-color: var(--primary);
+			animation: pulse 2s ease-in-out infinite;
 		}
 	}
 
 	&-heading {
-		max-width: 55%;
-		@media (width< 768px) {
-			max-width: 100%;
-		}
 		h1 {
-			// font-size: 6rem;
 			line-height: 100%;
+			text-align: center;
 		}
 		&-emphasis {
 			color: var(--primary);
-			transition: all 0.8s ease-in-out;
-			// &:hover {
-			// 	font-weight: bolder;
-			// }
+			transition: color 0.8s ease-in-out;
 		}
 	}
+
+	&-word {
+		display: inline-block;
+		margin-right: 0.3em;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
 	&-info {
-		padding-top: 1rem;
 		display: flex;
 		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
 		p {
-			font-size: 1.5rem;
+			font-size: 1.2rem;
+			text-align: center;
+			max-width: 500px;
 			@media (width< 768px) {
-				font-size: 1.2rem;
+				font-size: 1rem;
 			}
 		}
 	}
 
+	&-scroll-indicator {
+		position: absolute;
+		bottom: 2rem;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+
+		&-line {
+			width: 1px;
+			height: 40px;
+			background: linear-gradient(to bottom, var(--primary), transparent);
+			animation: scrollPulse 2s ease-in-out infinite;
+		}
+	}
+
+	// Brand banner styles kept for HeroBanner component reference
 	&-banner {
 		position: absolute;
 		width: 100%;
@@ -113,5 +162,28 @@
 				}
 			}
 		}
+	}
+}
+
+@keyframes pulse {
+	0%, 100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.5;
+		transform: scale(0.8);
+	}
+}
+
+@keyframes scrollPulse {
+	0%, 100% {
+		opacity: 1;
+		transform: scaleY(1);
+	}
+	50% {
+		opacity: 0.3;
+		transform: scaleY(0.6);
+		transform-origin: top;
 	}
 }

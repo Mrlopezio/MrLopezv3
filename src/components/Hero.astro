@@ -4,19 +4,33 @@ import ButtonCTA from './ui/ButtonCTA.astro'
 ---
 
 <section class="hero" id="hero">
+	<div class="hero-bg"></div>
 	<div class="hero-content">
-		<div class="hero-heading" >
+		<div class="hero-label">
+			<span class="hero-label-dot"></span>
+			<span>Web Development & Design</span>
+		</div>
+		<div class="hero-heading">
 			<h1>
-				Crafting & building ideas into <span class="hero-heading-emphasis">online</span> solutions
+				<span class="hero-word">Crafting</span>
+				<span class="hero-word">&</span>
+				<span class="hero-word">building</span>
+				<span class="hero-word">ideas</span>
+				<span class="hero-word">into</span>
+				<span class="hero-word hero-heading-emphasis">online</span>
+				<span class="hero-word">solutions</span>
 			</h1>
 		</div>
 		<div class="hero-info">
 			<p>
-				Helping early-stage startups and small businesses to turn complicated ideas into
-				high-performance and intuitive experiences
+				Helping early-stage startups and small businesses turn complicated ideas into
+				high-performance and intuitive experiences.
 			</p>
 			<ButtonCTA text="Get in touch" href="#contact" />
 		</div>
+	</div>
+	<div class="hero-scroll-indicator">
+		<div class="hero-scroll-indicator-line"></div>
 	</div>
 </section>
 
@@ -24,49 +38,67 @@ import ButtonCTA from './ui/ButtonCTA.astro'
 	import gsap from 'gsap'
 	import { ScrollTrigger } from 'gsap/ScrollTrigger'
 	gsap.registerPlugin(ScrollTrigger)
-	const h1Element = document.querySelector('.hero-heading')
-	const pElement = document.querySelector('.hero-info')
-    
-	// fade in animation
-	gsap.to(
-		h1Element,
-		{
-			opacity: 1,
-			duration: 1,
-			ease: 'Power3.easeOut'
-		}
-	)
-	gsap.to(pElement, {
+
+	const words = document.querySelectorAll('.hero-word')
+	const label = document.querySelector('.hero-label')
+	const info = document.querySelector('.hero-info')
+	const scrollIndicator = document.querySelector('.hero-scroll-indicator')
+
+	// Initial states
+	gsap.set(words, { opacity: 0, y: 60 })
+	gsap.set(label, { opacity: 0, y: 20 })
+	gsap.set(info, { opacity: 0, y: 30 })
+	gsap.set(scrollIndicator, { opacity: 0 })
+
+	// Staggered entrance
+	const tl = gsap.timeline({ delay: 0.3 })
+
+	tl.to(label, {
+		opacity: 1,
+		y: 0,
+		duration: 0.8,
+		ease: 'power3.out'
+	})
+	.to(words, {
+		opacity: 1,
+		y: 0,
+		duration: 0.8,
+		stagger: 0.08,
+		ease: 'power3.out'
+	}, '-=0.4')
+	.to(info, {
+		opacity: 1,
+		y: 0,
+		duration: 0.8,
+		ease: 'power3.out'
+	}, '-=0.3')
+	.to(scrollIndicator, {
 		opacity: 1,
 		duration: 1,
-		ease: 'Power3.easeOut'
-	})
+		ease: 'power2.out'
+	}, '-=0.3')
 
-	// Scroll animations
-	const h1ElementTween = gsap.to(h1Element, {
-		yPercent: 30,
-		scale: 0.8,
+	// Scroll parallax - content fades and moves up as user scrolls
+	gsap.to('.hero-content', {
+		yPercent: -20,
 		opacity: 0,
-		ease: 'Power3.easeOut',
+		ease: 'none',
 		scrollTrigger: {
-			trigger: h1Element,
-			start: 'end top ',
-			end: 'bottom end',
+			trigger: '.hero',
+			start: 'top top',
+			end: '80% top',
 			scrub: 1
-			// markers: true
 		}
 	})
-	const pElementTween = gsap.to(pElement, {
-		yPercent: 30,
-		scale: 0.8,
+
+	gsap.to(scrollIndicator, {
 		opacity: 0,
-		ease: 'Power3.easeOut',
+		ease: 'none',
 		scrollTrigger: {
-			trigger: h1Element,
-			start: 'end top ',
-			end: 'bottom end',
+			trigger: '.hero',
+			start: '10% top',
+			end: '30% top',
 			scrub: 1
-			// markers: true
 		}
 	})
 </script>
